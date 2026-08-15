@@ -1,16 +1,115 @@
-# React + Vite
+# Project Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React project-management interface built with **React** and **Vite**. It allows users to view, create, and search projects through a responsive interface.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* **Project Landing Page** — Displays a list of existing projects.
+* **Add Projects** — Create new projects by providing a project name and description.
+* **Dynamic Search** — Filter projects in real time by their name.
+* **Responsive Design** — Layout adapts to different screen sizes.
+* **React State Management** — Uses `useState` to manage projects, form inputs, and search queries.
+* **Component-Based Architecture** — UI functionality is separated into reusable React components.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **React**
+* **Vite**
+* **JavaScript**
+* **CSS**
+* **ESLint**
 
-## Expanding the ESLint configuration
+## How It Works
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Projects are stored in React state:
+
+```text
+Initial Projects
+      │
+      ▼
+  projects state
+      │
+      ├──────────────┐
+      ▼              ▼
+ Add Project      Search
+      │              │
+      ▼              ▼
+ Update state    Filter projects
+      │              │
+      └───────┬──────┘
+              ▼
+        ProjectsList
+```
+
+When a user enters a project name and description, clicking **Add** adds the project to the existing project collection.
+
+The search field updates a query stored in state. The query is then passed to the search function, which filters the projects before they are rendered.
+
+## Project Structure
+
+```text
+src/
+├── components/
+│   ├── AddProject.jsx
+│   ├── ProjectsList.jsx
+│   └── Search.jsx
+│
+├── ...
+└── main.jsx
+```
+
+The project separates functionality into components to keep the application easier to maintain and extend.
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have **Node.js** and **npm** installed.
+
+### Installation
+
+Clone the repository and install the dependencies:
+
+```bash
+npm install
+```
+
+### Development
+
+Start the Vite development server:
+
+```bash
+npm run dev
+```
+
+Vite will provide a local development URL in the terminal.
+
+### Production Build
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+To preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## Future Improvements
+
+Possible extensions include:
+
+* Persistent project storage using `localStorage` or a database
+* Project editing and deletion
+* Search across both project names and descriptions
+* Project categories or tags
+* Sorting and filtering options
+* Project detail pages
+* Backend integration
+
+## License
+
+This project is intended as a learning/project exercise and can be freely modified for personal use.
